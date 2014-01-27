@@ -92,6 +92,10 @@ server.on('connection', function(socket) {
                                     "username": o.user,
                                     "email": o.email,
                                     "country": o.country,
+                                    "winCount": o.winCount,
+                                    "loseCount": o.loseCount,
+                                    "points": o.points,
+                                    "gold": o.gold,
                                 };
                                 // pack it up and send it back to the client
                                 message = JSON.stringify(credentials)
@@ -99,6 +103,19 @@ server.on('connection', function(socket) {
                             }
                         }
                     ); // weird syntax habit
+                }
+
+                if (jsonObj.action == "add_index") {
+                    AM.addIndex( jsonObj["index"], function(e, o) {
+                        if(o){
+                            var msg = {
+                                "action":"add_index_success",
+                                "index":jsonObj["index"]
+                            }
+                            message = JSON.stringify(msg)
+                            socket.write("__JSON__START__" + message + "__JSON__END__");
+                        }
+                    });
                 }
 
         		if (jsonObj.action == "login") {

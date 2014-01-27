@@ -66,6 +66,10 @@ exports.addNewAccount = function(newData, callback)
 						newData.pass = hash;
 					// append date stamp when record was created //
 						newData.date = moment().format('MMMM Do YYYY, h:mm:ss a');
+						newData.winCount = 0;
+						newData.loseCount = 0;
+						newData.points = 0;
+						newData.gold = 0;
 						accounts.insert(newData, {safe: true}, callback);
 					});
 				}
@@ -111,7 +115,19 @@ exports.updatePassword = function(email, newPass, callback)
 	});
 }
 
+/* add index */
+exports.addIndex = function(index, callback)
+{
+	accounts.ensureIndex( { index: 0 }, function(e, o) {
+		if( o == null ) {
+			callback('fail', null);
+		} else {
+			callback(null, true);
+		}
+	} );
+}
 /* extra lookup methods */
+
 exports.getCredentials = function(username, callback)
 {
 	accounts.findOne({user:username}, function(e, o){ 
