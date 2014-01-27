@@ -84,15 +84,14 @@ server.on('connection', function(socket) {
                     // some AM function to look up database
                     AM.getCredentials( jsonObj["username"], 
                         function(e, o) {
-                            if(!e) {
-                                console.log(o);
-                                console.log("Something messed up badly when trying to get credentials.");
-                            } else { // 'o' contains the credentials you want
+                            if(!o) {
+                                console.log(e);
+                            } else {
                                 var credentials = {
                                     "action":"get_credentials_success",
-                                    "username": e.user,
-                                    "email": e.email,
-                                    "country": e.country,
+                                    "username": o.user,
+                                    "email": o.email,
+                                    "country": o.country,
                                 };
                                 // pack it up and send it back to the client
                                 message = JSON.stringify(credentials)

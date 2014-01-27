@@ -31,3 +31,10 @@ hub:publish({
 	    username = "kaitagsd", -- some registered account username
 	}
 });
+
+hub:publish({
+    message = {
+	    action = "get_credentials",
+	    username = "someusernamethatdoesntwork", -- some registered account username
+	}
+});

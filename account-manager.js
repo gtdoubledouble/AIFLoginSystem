@@ -114,7 +114,13 @@ exports.updatePassword = function(email, newPass, callback)
 /* extra lookup methods */
 exports.getCredentials = function(username, callback)
 {
-	accounts.findOne({user:username}, function(e, o){ callback(o); }); // depends what criteria you want to search under
+	accounts.findOne({user:username}, function(e, o){ 
+		if( o == null ) {
+			callback('Username [' + username + '] not found');
+		} else {
+			callback(null, o);
+		}
+	});
 }
 
 /* account lookup methods */
