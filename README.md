@@ -9,35 +9,36 @@ Your own private server with node.js running ([here's the cheap one I'm using](h
     
 Finally, you will need to run the Noobhub server
 
-    `> node node`
+    > node node
 
 And also the node-login system
 
-    `> cd node-login (wherever you cloned or placed the folder)`
+    > cd node-login (wherever you cloned or placed the folder)
 
-    `> node node-login`
+    > node node-login
     
 
 Now, when you run the Corona SDK client, it will attempt to pull the credentials of the username in main.lua's line 31 (username). Register an account yourself to test.
     
 If successful, you should see the following output on the node.js server:
-`NoobHub on 0.0.0.0:1337
 
-connected to database :: node-login
+	NoobHub on 0.0.0.0:1337
 
-New client: 96.49.26.95:57195
+	connected to database :: node-login
 
-Client subscribes for channel: hello-world
+	New client: 96.49.26.95:57195
 
-Client posts json:  {"action":"get_credentials","username":"kaitagsd"}`
+	Client subscribes for channel: hello-world
+
+	Client posts json:  {"action":"get_credentials","username":"kaitagsd"}
     
 
 And the following in the client:
 
-`2014-01-26 16:02:03.533 Corona Simulator[16978:507] Get credentials success
+	2014-01-26 16:02:03.533 Corona Simulator[16978:507] Get credentials success
 
-2014-01-26 16:02:03.533 Corona Simulator[16978:507] username        kaitagsd
+	2014-01-26 16:02:03.533 Corona Simulator[16978:507] username        kaitagsd
 
-2014-01-26 16:02:03.533 Corona Simulator[16978:507] country Canada
+	2014-01-26 16:02:03.533 Corona Simulator[16978:507] country Canada
 
-2014-01-26 16:02:03.534 Corona Simulator[16978:507] email   garytse89@gmail.com`
+	2014-01-26 16:02:03.534 Corona Simulator[16978:507] email   garytse89@gmail.com
